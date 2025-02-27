@@ -6,6 +6,10 @@ class CloudStorage(BaseHTTPClient):
         super().__init__(api_url, api_key)
         self.bin_id = bin_id
 
+    def process_request(self, *args, **kwargs):
+        """Заглушка для абстрактного метода."""
+        pass
+
     def get_tasks(self):
         response = self._send_request("GET", f"b/{self.bin_id}")
         if isinstance(response, dict) and "record" in response:
